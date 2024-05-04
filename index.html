@@ -10,7 +10,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        height: 90vh;
         flex-direction: column;
       }
     h1 {
@@ -67,27 +67,24 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5;
+    opacity: 1;
 }
     </style>
     <script>
-    function delete() {
-        const url = document.getElementById('urli').value;
-            fetch(url, {
-                method: 'DELETE'
-            })
-           .then(response => {
-                const statusCode = response.status;
-                alert("Response Code: " + statusCode);
-            })
-            .catch(error => console.error('Error:', error));
-          }
+    const input = document.getElementById("input");
+    const button = document.getElementById("del");
+    button.addEventListener("click", () => {
+      fetch(`${input}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+    });
     </script>
 </head>
 <body>
     <h1>Webhook Deleter<h1>
-    <input type="text" id="urli" name="webhook" placeholder="Link do Webhook">
-    <button class="botao", onclick="delete()"> <img src="delete.png"></button>
+    <input type="text" id="input" placeholder="Link do Webhook">
+    <button class="botao", id="del"> <img src="delete.png"></button>
     <p1>Made with ❤ by Chronischer</p1>
 </body>
 </html>
