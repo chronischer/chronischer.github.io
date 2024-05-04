@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@chronischer</title>
     <style>
-    body {
+        body {
         background-color: #36393e;
         display: flex;
         align-items: center;
@@ -26,7 +26,7 @@
       }
       input {
         padding: 10px 20px;
-        background-color: #1e2124;
+        background-color: #151515;
         color: black;
         border: none;
         border-radius: 10px;
@@ -71,20 +71,29 @@
 }
     </style>
     <script>
-    const input = document.getElementById("input");
-    function delete() {
-  fetch(`${input}`, {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-  });
-}
+        function deleteWebhook() {
+            const input = document.getElementById("input").value; // Pegar o valor do input
+            fetch(input, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Webhook deletado com sucesso!");
+                } else {
+                    alert("Falha ao deletar o webhook.");
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao deletar o webhook:", error);
+            });
+        }
     </script>
 </head>
 <body>
-    <h1>Webhook Deleter<h1>
+    <h1>Webhook Deleter</h1>
     <input type="text" id="input" placeholder="Link do Webhook">
-    <button onclick="delete()" class="botao"> <img src="delete.png"></button>
-    <p1>Made with ❤ by Chronischer</p1>
+    <button onclick="deleteWebhook()" class="botao"> <img src="delete.png"></button>
+    <p>Made with ❤ by Chronischer</p>
 </body>
 </html>
-
