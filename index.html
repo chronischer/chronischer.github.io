@@ -72,19 +72,18 @@
     </style>
     <script>
     const input = document.getElementById("input");
-    const button = document.getElementById("del");
-    button.addEventListener("click", () => {
-      fetch(`${input}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
-    });
+    function delete() {
+  fetch(`${input}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+}
     </script>
 </head>
 <body>
     <h1>Webhook Deleter<h1>
     <input type="text" id="input" placeholder="Link do Webhook">
-    <button class="botao", id="del"> <img src="delete.png"></button>
+    <button onclick="delete()" class="botao"> <img src="delete.png"></button>
     <p1>Made with ❤ by Chronischer</p1>
 </body>
 </html>
