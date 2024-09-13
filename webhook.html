@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@chronischer</title>
+    <style>
+    body {
+        background-color: #36393e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        flex-direction: column;
+      }
+    h1 {
+        color: white;
+        font-size: 36px;
+        animation: fadeIn 2s;
+        text-align: center;
+        width: 100%;
+      }
+      p1 {
+        color: gray;
+        font-size: 16px;
+      }
+      input {
+        padding: 10px 20px;
+        background-color: #151515;
+        color: black;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 200px;
+        margin: 0 10px;
+        transition: border-color 0.3s
+        transition: border 0.3s;
+      }
+      input:focus {
+    outline: none;
+    border: solid;
+    border-color: #7289da;
+}
+     input {
+     color: #a0a0a0
+     }
+    .botao {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    background-color: transparent; /* Cor de fundo sólida */
+    width: 30px;
+    height: 40px;
+    border: none;
+    outline: none;
+}
+
+.botao img {
+    border-radius: 10px;
+    position: absolute;
+    outline: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+    </style>
+    <script>
+    function deleteWebhook() {
+            const input = document.getElementById("input").value; // Pegar o valor do input
+            fetch(input, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Webhook deletado com sucesso!");
+                } else {
+                    alert("Falha ao deletar o webhook.");
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao deletar o webhook:", error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Webhook Deleter<h1>
+    <input type="text" id="input" placeholder="Link do Webhook">
+    <button onclick="deleteWebhook()" class="botao"> <img src="delete.png"></button>
+    <p1>Made with ❤ by Chronischer</p1>
+</body>
+</html>
+
