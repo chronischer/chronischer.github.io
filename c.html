@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criptografador/Descriptografador</title>
+</head>
+<body>
+    <textarea id="texto" placeholder="Digite seu texto aqui"></textarea>
+    <button onclick="criptografar()">Criptografar</button>
+    <button onclick="descriptografar()">Descriptografar</button>
+    <textarea id="resultado" readonly></textarea>
+
+    <script>
+        const tabelaSubstituicao = {
+  "A": ".",
+  "B": ",",
+  "C": "+",
+  "D": ")",
+  "E": "!",
+  "F": "(",
+  "G": "?",
+  "H": "-",
+  "I": "1",
+  "J": "A",
+  "K": "K",
+  "L": "Z",
+  "M": "+",
+  "N": "Q",
+  "O": "0",
+  "P": "X",
+  "Q": "'",
+  "R": "R",
+  "S": "S",
+  "T": "U",
+  "U": "V",
+  "V": "T",
+  "W": "$",
+  "X": "W",
+  "Y": "/",
+  "Z": "*"
+        };
+
+        function criptografar() {
+            const texto = document.getElementById('texto').value;
+            let resultado = '';
+            for (let i = 0; i < texto.length; i++) {
+                const char = texto[i].toUpperCase();
+                resultado += tabelaSubstituicao[char] || char;
+            }
+            document.getElementById('resultado').value = resultado;
+        }
+
+        function descriptografar() {
+            const texto = document.getElementById('texto').value;
+            let resultado = '';
+            for (let i = 0; i < texto.length; i++) {
+                const char = texto[i];
+                for (const chave in tabelaSubstituicao) {
+                    if (tabelaSubstituicao[chave] === char) {
+                        resultado += chave;
+                        break;
+                    }
+                }
+                if (!resultado[i]) resultado += char;
+            }
+            document.getElementById('resultado').value = resultado;
+        }
+    </script>
+</body>
+</html>
