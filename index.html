@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:title" content="validation. @ Discord" />
+  <meta property="og:description" content="♋ The Moon." />
+  <meta name="theme-color" content="#000000">
+  <title>This website gets worse every remake</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+    * {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Inconsolata, sans-serif;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 430px;
+      padding: 16px;
+    }
+    h2 {
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    #lanyard {
+      text-align: center;
+    }
+    #lanyard img {
+      width: 100%;
+      height: auto;
+    }
+    #loading {
+      font-size: 14px;
+      color: #666;
+    }
+    #sx {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="lanyard">
+      <div id="loading">Fetching Lanyard...</div>
+    </div>
+  </div>
+<script>
+  const container = document.getElementById("lanyard");
+  const loading = document.getElementById("loading");
+
+  fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://lanyard.cnrad.dev/api/460493336076091392?theme=dark&borderRadius=0px&bg=000&showDisplayName=true&idleMessage=Take%20your%20Heart!"))
+    .then(res => res.ok ? res.json() : Promise.reject("Failed to load"))
+    .then(data => {
+      const base64Data = data.contents.trim();
+      const img = document.createElement("img");
+      img.src = base64Data;
+      img.alt = "Discord Status";
+
+      const link = document.createElement("a");
+      link.href = "https://discord.com/users/460493336076091392";
+      link.appendChild(img);
+
+      container.innerHTML = "";
+      container.appendChild(link);
+    })
+    .catch(err => {
+      console.error("Erro ao buscar o Lanyard:", err);
+      location.reload();
+    });
+</script>
+</body>
+  </html>
